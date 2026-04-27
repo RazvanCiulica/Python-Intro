@@ -1,11 +1,18 @@
-def extract_errors(logs):
-    errors = []
+class LogAnalyzer:
+    def __init__(self, logs):
+        self.logs = logs
 
-    for log in logs:
-        if "ERROR" in log:
-            errors.append(log)
+    def extract_by_level(self, level):
+        result = []
 
-    return {
-        "total_error" : len(errors),
-        "errors" : errors
-    }
+        for log in self.logs:
+            if level in log:
+                result.append(log)
+
+        return result
+    
+    def summary(self):
+        return {
+            "errors": len(self.extract_by_level("ERROR")),
+            "info": len(self.extract_by_level("INFO"))
+        }

@@ -1,4 +1,4 @@
-from log_parser import extract_errors
+from log_parser import LogAnalyzer
 
 logs = [
     "INFO : System started",
@@ -7,5 +7,5 @@ logs = [
     "ERROR: Sensor issue"
 ]
 
-result = extract_errors(logs)
-print(result)
+analyzer = LogAnalyzer(logs)
+print(analyzer.summary())
